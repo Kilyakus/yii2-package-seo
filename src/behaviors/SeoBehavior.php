@@ -21,7 +21,7 @@ class SeoBehavior extends \yii\base\Behavior
     public function afterInsert()
     {
         if($this->seoText->load(Yii::$app->request->post())){
-            if(!$this->seoText->isEmpty()){
+            if(!$this->seoText->isEmpty() || !$this->seoText->isEmptyTranslations()){
                 $this->seoText->save();
             }
         }
@@ -30,7 +30,14 @@ class SeoBehavior extends \yii\base\Behavior
     public function afterUpdate()
     {
         if($this->seoText->load(Yii::$app->request->post())){
-            if(!$this->seoText->isEmpty()){
+            if(isset(Yii::$app->request->post('SeoText')['translations']))
+            {
+                $condition = !$this->seoText->isEmptyTranslations() || !$this->seoText->isEmpty();
+            }else{
+                $condition = !$this->seoText->isEmpty();
+            }
+
+            if($condition){
                 $this->seoText->save();
             } else {
                 if($this->seoText->primaryKey){

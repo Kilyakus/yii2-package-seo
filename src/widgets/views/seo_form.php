@@ -1,31 +1,36 @@
 <?php
 use yii\bootstrap\BootstrapPluginAsset;
 use yii\helpers\Html;
-
+use kilyakus\package\translate\widgets\TranslateForm;
 BootstrapPluginAsset::register($this);
 
 $labelOptions = ['class' => 'control-label'];
 $inputOptions = ['class' => 'form-control'];
 ?>
+
 <p>
-    <a class="dashed-link collapsed" data-toggle="collapse" href="#seo-form" aria-expanded="false" aria-controls="seo-form"><?= Yii::t('easyii', 'Seo texts')?></a>
+	<?= Html::a(Yii::t('easyii', 'Seo texts'), '#seo-form', ['class' => 'dashed-link collapsed', 'data-toggle' => 'collapse', 'aria-expanded' => 'false', 'aria-controls' => 'seo-form']); ?>
 </p>
 
 <div class="collapse" id="seo-form">
     <div class="form-group">
-        <?= Html::activeLabel($model, 'h1', $labelOptions) ?>
-        <?= Html::activeTextInput($model, 'h1', $inputOptions) ?>
+        <?php /* Html::activeLabel($model, 'h1', $labelOptions) */ ?>
+        <?php /* Html::activeTextInput($model, 'h1', $inputOptions) */ ?>
+        <?= TranslateForm::widget(['model' => $model, 'attribute' => 'h1']); ?>
     </div>
     <div class="form-group">
-        <?= Html::activeLabel($model, 'title', $labelOptions) ?>
-        <?= Html::activeTextInput($model, 'title', $inputOptions) ?>
+        <?php /* Html::activeLabel($model, 'title', $labelOptions) */  ?>
+        <?php /* Html::activeTextInput($model, 'title', $inputOptions) */ ?>
+        <?= TranslateForm::widget(['model' => $model, 'attribute' => 'title']); ?>
     </div>
     <div class="form-group">
-        <?= Html::activeLabel($model, 'keywords', $labelOptions) ?>
-        <?= Html::activeTextInput($model, 'keywords', $inputOptions) ?>
+        <?php /* Html::activeLabel($model, 'keywords', $labelOptions) */ ?>
+        <?php /* Html::activeTextInput($model, 'keywords', $inputOptions) */ ?>
+        <?= TranslateForm::widget(['model' => $model, 'attribute' => 'keywords']); ?>
     </div>
     <div class="form-group">
-        <?= Html::activeLabel($model, 'description', $labelOptions) ?>
-        <?= Html::activeTextarea($model, 'description', $inputOptions) ?>
+        <?php /* Html::activeLabel($model, 'description', $labelOptions) */  ?>
+        <?php /* Html::activeTextarea($model, 'description', $inputOptions) */  ?>
+        <?= TranslateForm::widget(['model' => $model, 'attribute' => 'description']); ?>
     </div>
 </div>
