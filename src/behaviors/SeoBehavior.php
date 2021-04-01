@@ -74,4 +74,10 @@ class SeoBehavior extends \yii\base\Behavior
 
         return $this->_model;
     }
+
+    public function setSeoText($data = [])
+    {
+        $this->_model = new SeoText($data);
+        return $this->_model;
+    }
 }
